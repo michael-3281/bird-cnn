@@ -46,12 +46,14 @@ A custom built Convolutional Neural Network designed to identify bird species di
 
 
 **How to Run**
+
   
   **1. Web:** Simply go to PLACEHOLDER URL in your browser.
   
   **2. Training/Local:** Install dependencies (listed in `requirements.txt`
     - Place images in `data/[Species Name]/`
     - Run `training/main.py`
+
 
 
 
