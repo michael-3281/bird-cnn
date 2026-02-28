@@ -1,0 +1,4 @@
+numpy
+cupy-cuda12x
+pillow
+matplotlib
