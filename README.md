@@ -15,10 +15,15 @@ A custom built Convolutional Neural Network designed to identify bird species di
 
 **Performance**
   Thanks to an optimized CuPy backend, the training engine can achieve massive throughput:
+  
   **Images:** 600
+  
   **Batch Size:** 64
+  
   **Total Operations:** 60000 images processed
+  
   **Total Time:** 67.06 seconds
+  
   **Throughput:** 895 images/sec
 
 
@@ -59,6 +64,7 @@ A custom built Convolutional Neural Network designed to identify bird species di
   **2. Training/Local:** Install dependencies (listed in `requirements.txt`
     - Place images in `data/[Species Name]/`
     - Run `training/main.py`
+
 
 
 
