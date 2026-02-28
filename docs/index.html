@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Classifier - AI Species Recognition</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=upload" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body class="dark-theme">
+    <header>
+        <div class="logo-container">
+            <div class="icon">O</div>
+            <div>
+                <h1>Bird Classifier</h1>
+                <p class="subtitle">Advanced machine learning bird species recognition</p>
+            </div>
+        </div>
+    </header>
+
+    <main id="app-container">
+        <section id="upload-section" class="view">
+            <h2>Upload a Bird Image</h2>
+            <p>The algorithm will analyze the image and identify the species</p>
+            <div id="dropzone" class="dropzone">
+                <span class="material-symbols-outlined">
+                    upload
+                </span>
+                <p>Drop your bird image here or <span>click to browse</span></p>
+                <p class="formats">Supports JPG, PNG, and other formats</p>
+                <input type="file" id="file-input" hidden>
+            </div>
+
+            <div id="loading-overlay" class="hidden">
+                <div class="spinner"></div>
+                <h3>Analyzing Image...</h3>
+                <p>Processing neural network layers</p>
+            </div>
+
+            <style>
+                .spinner {
+                    width: 50px;
+                    height: 50px;
+                    border: 5px solid rgba(13, 202, 240, 0.1);
+                    border-top: 5px solid #0dcaf0;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
+                    margin: 20px auto;
+                }
+
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+
+                .hidden { display: none !important; }
+            </style>
+        </section>
+
+        <section id="results-section" class="view hidden">
+            <div class="image-comparison">
+                <div class="img-card">
+                    <h3><span>•</span> Original Image</h3>
+                    <div id="original-preview" class="placeholder-box">Original</div>
+                </div>
+                <div class="img-card">
+                    <h3><span>•</span> What the Program is Doing</h3>
+                    <div class="heatmap-container">
+                        <img id="heatmap-view" src="assets/layer1.png" alt="CNN Heatmap">
+                        <div class="layer-info">Showing Layer: <span id="layer-num">1</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-card">
+                <div class="prediction-header">
+                    <span class="check-icon">✓</span>
+                    <div>
+                        <h4>Predicted Species</h4>
+                        <h2 id="top-prediction">Blue Jay</h2>
+                    </div>
+                    <div class="confidence-val">89.3%</div>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width: 89.3%"></div></div>
+
+                <div class="alternative-predictions">
+                    <h5>Alternative Predictions</h5>
+                    <div class="alt-row">
+                        <span>American Robin</span>
+                        <div class="mini-bar"><div class="fill" style="width: 30.6%"></div></div>
+                        <span>30.6%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deep-dive-container">
+                <div class="img-card math-card">
+                    <h2 class="deep-dive-title">Technical Deep Dive</h2>
+                    <p>This model uses a 4-layer Convolutional Neural Network (CNN). Here's the logic behind the predictions!</p>
+                    
+                    <div class="formula-box">
+                        <h3 class="math-label">1. Feature Extraction (Convolution)</h3>
+                        <p class="math-desc">The model slices small "filters" over the image to detect raw patterns (e.g. the curve of a beak).</p>
+                        <div id="math-conv" class="math-display"></div>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3 class="math-label">2. The Activation Switch (ReLU)</h3>
+                        <p class="math-desc">After each convolution, the ReLU function decides which features are important enough to pass forward, filtering out the "noise."</p>
+                        <div id="math-relu" class="math-display"></div>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3 class="math-label">3. Probability Distribution (Softmax)</h3>
+                        <p class="math-desc">The final layer looks at all detected features and calculates a final probability score for every bird species in the database.</p>
+                        <div id="math-softmax" class="math-display"></div>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3 class="math-label">Training Data Notice</h3>
+                        <p class="math-desc">This program is currently only trained on the following species, it cannot make predictions outside of them.</p>
+                        <p class="math-desc">American Robin</p>
+                        <p class="math-desc">Bald Eagle</p>
+                        <p class="math-desc">Blue Jay</p>
+                    </div>
+
+                    <div class="bug-report">
+                        <p>Misclassification? Feel free to report a bug on GitHub!</p>
+                        <a href="https://github.com/michael-3281" target="_blank" class="bug-link">
+                            GitHub Issue Report
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="sticky-footer">
+                <button id="reset-btn" class="btn-primary">Classify Another Image</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
