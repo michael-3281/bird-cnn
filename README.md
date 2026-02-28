@@ -3,11 +3,13 @@
 
 A custom built Convolutional Neural Network designed to identify bird species directly in the browser.
 
+
 **The current supported species are:**
   * American Robin
   * Bald Eagle
   * Blue Jay
     More to come!
+
 
 **Performance**
   Thanks to an optimized CuPy backend, the training engine can achieve massive throughput:
@@ -17,15 +19,20 @@ A custom built Convolutional Neural Network designed to identify bird species di
   **Total Time:** 67.06 seconds
   **Throughput:** 895 images/sec
 
+
 **Technical Deep Dive**
   The model architecture is a 4-layer CNN built from scratch. (no framework like TensorFlow/PyTorch used)
+  
   Is this better? Likely not, but I still learned a lot.
+
 
   1. Feature Extraction
     Uses custom kernels to detect edges, textures, and colors.
 
+
   2. Activation
     ReLU (Rectified Linear Unit) filters out noise by passing only positive features.
+
 
   3. Distribution
      Softmax converts raw logits into human-readable probabilities.
@@ -37,12 +44,15 @@ A custom built Convolutional Neural Network designed to identify bird species di
   * `docs/model/model_weights.json`: The pre-trained "brain" of the operation.
   * `data/`: Placeholder folder for data organization.
 
+
 **How to Run**
+  
   **1. Web:** Simply go to PLACEHOLDER URL in your browser.
   
   **2. Training/Local:** Install dependencies (listed in `requirements.txt`
     - Place images in `data/[Species Name]/`
     - Run `training/main.py`
+
 
 
 
