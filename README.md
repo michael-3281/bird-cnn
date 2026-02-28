@@ -1,4 +1,4 @@
-![Bird-CNN Banner](docs\assets\github_images\banner.png)
+![Bird-CNN Banner](docs/assets/github_images/banner.png)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg) ![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
 
 A custom built Convolutional Neural Network designed to identify bird species directly in the browser.
@@ -42,5 +42,6 @@ A custom built Convolutional Neural Network designed to identify bird species di
   **2. Training/Local:** Install dependencies (listed in `requirements.txt`
     - Place images in `data/[Species Name]/`
     - Run `training/main.py`
+
 
 
