@@ -1,20 +1,21 @@
 ![Bird-CNN Banner](docs/assets/github_images/banner.png)
-![License](https://img.shields.io/badge/License-MIT-blue.svg) ![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 A custom built Convolutional Neural Network designed to identify bird species directly in the browser.
-
-
-
+  
+  
+  
 **The current supported species are:**
   * American Robin
   * Bald Eagle
   * Blue Jay
+  
     More to come!
 
 
 
 **Performance**
-  Thanks to an optimized CuPy backend, the training engine can achieve massive throughput:
+  Thanks to an optimized backend, the training engine can achieve massive throughput:
   
   **Images:** 600
   
@@ -25,9 +26,9 @@ A custom built Convolutional Neural Network designed to identify bird species di
   **Total Time:** 67.06 seconds
   
   **Throughput:** 895 images/sec
-
-
-
+  
+  
+  
 **Technical Deep Dive**
   The model architecture is a 4-layer CNN built from scratch. (no framework like TensorFlow/PyTorch used)
   
@@ -49,9 +50,9 @@ A custom built Convolutional Neural Network designed to identify bird species di
 
 
 **Project Structure**
-  * `training/main.py`: The GPU accelerated training script.
+  * `training/main.py`: The training script.
   * `docs/`: The web-facing application.
-  * `docs/model/model_weights.json`: The pre-trained "brain" of the operation.
+  * `docs/model/model_weights.json`: The "brain" of the program.
   * `data/`: Placeholder folder for data organization.
 
 
@@ -64,6 +65,7 @@ A custom built Convolutional Neural Network designed to identify bird species di
   **2. Training/Local:** Install dependencies (listed in `requirements.txt`
     - Place images in `data/[Species Name]/`
     - Run `training/main.py`
+
 
 
 
